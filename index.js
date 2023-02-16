@@ -3,7 +3,6 @@ const app = express()
 const cors = require('cors')
 require('dotenv').config();
 const mongoose = require('mongoose');
-const userRouter = require('./routes/user');
 
 app.use(express.urlencoded({extended:true}));
 app.use(cors())
@@ -25,8 +24,6 @@ mongoose.connection.on('error',(err)=>{
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
-
-app.use(userRouter);
 
 
 const listener = app.listen(process.env.PORT || 3000, () => {
