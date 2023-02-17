@@ -4,8 +4,12 @@ const User = require("../models/user");
 
 
 apiRouter.get('/users',async (req,res)=>{
-   await User.find({},(err,result)=>{
-       res.json(result);
+    User.find({},(err,result)=>{
+       if(!err){
+        res.json(result);
+       }else{
+        console.log(err);
+       }
    })
 })
 
